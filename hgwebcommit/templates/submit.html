@@ -1,0 +1,38 @@
+{% extends "base_site.html" %}
+
+{% block main %}
+<p>
+{{ message }}:
+</p>
+<ul>
+  {% for filename in form.data.files %}
+    <li>{{ filename }}</li>
+  {% endfor %}
+</ul>
+<form method="post" action="{{ url_for('submit_confirm') }}">
+  <div style="display:none;">
+    {{ form.csrf }}
+    {{ form.files }}
+    {{ form.confirm }}
+    {{ form.operation }}
+  </div>
+  {% if enable_commit_message %}
+    <div>
+      {{ form.commit_message.label }}: {{ form.commit_message }}
+    </div>
+  {% endif %}
+  <div class="operation">
+    <input type="submit" value="OK" />
+    <button type="button" class="button-cancel">キャンセル</button>
+  </div>
+</form>
+{% endblock %}
+
+{% block js %}
+(function() {
+  var cancel_redirect_url = "{{ url_for('index') }}";
+  $("button.button-cancel").click(function() {
+    document.location = cancel_redirect_url;
+  })
+})();
+{% endblock %}

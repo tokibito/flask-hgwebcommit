@@ -1,0 +1,75 @@
+/* tag */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: small;
+}
+h1 {
+  margin: 0;
+  padding: 0;
+  font-size: large;
+}
+h2 {
+  margin: 0.5em 0;
+  padding: 0.3em 1em;
+  font-size: medium;
+  background-color: #EEEEEE;
+  border: solid 1px #CCCCCC;
+}
+h2:hover {
+  background-color: #E4E4E4;
+}
+form {
+  margin: 0;
+  padding: 0;
+}
+
+/* class */
+.select-files select {
+  width: 60%;
+}
+.operation {
+  margin: 0.5em 0;
+}
+
+/* id */
+#header {
+  padding: 0.5em 0.5em;
+  color: #AFD4D9;
+  background-color: #25567B;
+}
+#header a:link {
+  color: #AFD4D9;
+  text-decoration: none;
+}
+#header a:visited {
+  color: #AFD4D9;
+  text-decoration: none;
+}
+#header a:hover {
+  color: #B9DEE3;
+  text-decoration: none;
+}
+#header a:active {
+  color: #AFD4D9;
+  text-decoration: none;
+}
+
+#main {
+  padding: 0.5em 1em 0;
+}
+
+#repository-meta {
+  float: right;
+  margin: 1.2em;
+  padding: 1em;
+  line-height: 1.4em;
+  background-color: #EEEEEE;
+  border: solid 1px #CCCCCC;
+}
+#repository-meta td {
+  padding-left: 1em;
+}
+#repository-meta caption {
+  font-weight: bold;
+}

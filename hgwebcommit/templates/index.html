@@ -1,0 +1,93 @@
+{% extends "base_site.html" %}
+
+{% block main %}
+<div id="repository-meta">
+  <table>
+    <caption>リポジトリの状態</caption>
+    <tbody>
+      <tr>
+        <th>ブランチ</th>
+        <td>{{ repository.branch() }}</td>
+      </tr>
+      <tr>
+        <th>リビジョン</th>
+        <td>{{ repository.parent_number() }}: {{ repository.parent_revision() }}</td>
+      </tr>
+      <tr>
+        <th>日時</th>
+        <td>{{ repository.parent_date() }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div>
+      <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endwith %}
+
+<h2>管理対象のファイルの変更</h2>
+{% if form_ctrl.files.choices %}
+  <form method="post" action="{{ url_for('submit_confirm') }}" id="formctrl">
+    {{ form_ctrl.csrf_token }}
+    <div class="select-files">
+      {{ form_ctrl.files }}
+    </div>
+    <div class="operation">
+      <input type="hidden" name="{{ form_ctrl._prefix }}operation" value="" id="formctrl-operation" />
+      <button type="button" id="formctrl-commit">コミット(commit)</button>
+      <button type="button" id="formctrl-revert">戻す(revert)</button>
+      <button type="button" id="formctrl-remove">削除(remove)</button>
+    </div>
+  </form>
+{% else %}
+  <p>
+    管理対象のファイルに変更はありません。
+  </p>
+{% endif %}
+<h2>管理外のファイル</h2>
+{% if form_unknown.files.choices %}
+  <form method="post" action="{{ url_for('add_unknown_confirm') }}">
+    {{ form_unknown.csrf_token }}
+    <div class="select-files">
+      {{ form_unknown.files }}
+    </div>
+    <div class="operation">
+      <input type="submit" value="追加(add)" />
+    </div>
+  </form>
+{% else %}
+  <p>
+    管理外のファイルはありません。
+  </p>
+{% endif %}
+{% endblock %}
+
+{% block js %}
+(function() {
+  var hgwebcommit = {};
+  hgwebcommit.submit_form = function(op) {
+    $("#formctrl-operation").val(op);
+    $("#formctrl").submit();
+  };
+
+  $(document).ready(function() {
+    $("#formctrl-commit").click(function() {
+      hgwebcommit.submit_form("commit");
+    });
+    $("#formctrl-revert").click(function() {
+      hgwebcommit.submit_form("revert");
+    });
+    $("#formctrl-remove").click(function() {
+      hgwebcommit.submit_form("remove");
+    });
+  })
+})();
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block title %}{{ repository.name }} - hgwebcommit{% endblock %}
+
+{% block header %}
+<h1><a href="{{ url_for('index') }}">リポジトリ: {{ repository.path }}</a></h1>
+{% endblock %}
