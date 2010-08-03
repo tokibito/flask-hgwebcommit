@@ -3,7 +3,7 @@ from hgwebcommit import app
 
 # config
 SECRET_KEY = '(secret key)'
-HGWEBCOMMIT_REPOSITORY = '/home/tokibito/_work/repos'
+HGWEBCOMMIT_REPOSITORY = '/path/to/repository'
 HGWEBCOMMIT_ENCODING = 'utf-8'
 
 if __name__ == '__main__':
