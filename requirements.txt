@@ -1,0 +1,2 @@
+Flask>=0.5
+Flask-WTF>=0.2.3
