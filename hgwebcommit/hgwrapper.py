@@ -12,6 +12,7 @@ class MercurialWrapper(object):
     def __init__(self, path, encoding='utf-8'):
         self.path = os.path.normpath(path)
         self.ui = ui()
+        self.ui.readconfig(os.path.join(self.path, '.hg', 'hgrc'))
         self.repository = repository(self.ui, self.path)
         self.encoding = encoding
 
