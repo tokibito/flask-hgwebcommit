@@ -1,24 +1,36 @@
 {% extends "base_site.html" %}
 
 {% block main %}
-<div id="repository-meta">
-  <table>
-    <caption>リポジトリの状態</caption>
-    <tbody>
-      <tr>
-        <th>ブランチ</th>
-        <td>{{ repository.branch() }}</td>
-      </tr>
-      <tr>
-        <th>リビジョン</th>
-        <td>{{ repository.parent_number() }}: {{ repository.parent_revision() }}</td>
-      </tr>
-      <tr>
-        <th>日時</th>
-        <td>{{ repository.parent_date() }}</td>
-      </tr>
-    </tbody>
-  </table>
+<div id="sidebar">
+  <div id="repository-meta" class="sidebar-panel">
+    <table>
+      <caption>リポジトリの状態</caption>
+      <tbody>
+        <tr>
+          <th>ブランチ</th>
+          <td>{{ repository.branch() }}</td>
+        </tr>
+        <tr>
+          <th>リビジョン</th>
+          <td>{{ repository.parent_number() }}: {{ repository.parent_revision() }}</td>
+        </tr>
+        <tr>
+          <th>日時</th>
+          <td>{{ repository.parent_date() }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="action-form" class="sidebar-panel">
+    <h3>アクションを実行</h3>
+    <form method="post" action="{{ url_for('exec_action') }}" id="formactions">
+      {{ form_actions.csrf_token }}
+      <div>
+        {{ form_actions.action }}
+        <input type="submit" value="実行" />
+      </div>
+    </form>
+  </div>
 </div>
 
 {% with messages = get_flashed_messages() %}

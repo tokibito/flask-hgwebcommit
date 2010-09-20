@@ -6,6 +6,11 @@ SECRET_KEY = '(secret key)'
 HGWEBCOMMIT_REPOSITORY = '/path/to/repository'
 HGWEBCOMMIT_ENCODING = 'utf-8'
 
+# actions
+HGWEBCOMMIT_ACTIONS = (
+    # 'hgwebcommit.actions.hello',
+)
+
 if __name__ == '__main__':
     app.debug = True
     app.config.from_object(__name__)

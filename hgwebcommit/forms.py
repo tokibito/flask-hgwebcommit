@@ -1,6 +1,6 @@
 # coding:utf8
 from flaskext.wtf import Form
-from flaskext.wtf import SelectMultipleField, IntegerField, HiddenField, TextField
+from flaskext.wtf import SelectMultipleField, IntegerField, HiddenField, TextField, SelectField
 from flaskext.wtf import HiddenInput, Required
 
 class SelectFileForm(Form):
@@ -12,3 +12,6 @@ class SelectFileConfirmForm(SelectFileForm):
 class SelectFileSubmitConfirmForm(SelectFileConfirmForm):
     operation = HiddenField(validators=[Required()])
     commit_message = TextField(u'コミットメッセージ')
+
+class SelectActionForm(Form):
+    action = SelectField(u'Action', validators=[Required()])
