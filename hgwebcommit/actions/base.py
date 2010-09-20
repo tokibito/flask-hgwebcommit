@@ -16,13 +16,25 @@ class Action(object):
 
 class ActionManager(object):
     def __init__(self):
-        self.actions = []
+        self._actions = []
+        self.loaded = False
+
+    @property
+    def actions(self):
+        """
+        アクションが未ロードならロードする
+        """
+        if not self.loaded:
+            self.loaded = True
+            from hgwebcommit.actions import loader
+            loader.load_actions()
+        return self._actions
 
     def add(self, action):
         """
         追加
         """
-        self.actions.append(action)
+        self._actions.append(action)
 
     def list(self):
         """
