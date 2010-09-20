@@ -34,6 +34,22 @@
 {% endwith %}
 
 <h2>管理対象のファイルの変更</h2>
+<div class="status-help">
+  <ul>
+    <li>
+      <span class="status-mark">M</span>変更
+    </li>
+    <li>
+      <span class="status-mark">A</span>追加
+    </li>
+    <li>
+      <span class="status-mark">R</span>削除
+    </li>
+    <li>
+      <span class="status-mark">!</span>行方不明
+    </li>
+  </ul>
+</div>
 {% if form_ctrl.files.choices %}
   <form method="post" action="{{ url_for('submit_confirm') }}" id="formctrl">
     {{ form_ctrl.csrf_token }}
@@ -53,6 +69,13 @@
   </p>
 {% endif %}
 <h2>管理外のファイル</h2>
+<div class="status-help">
+  <ul>
+    <li>
+      <span class="status-mark">?</span>管理外
+    </li>
+  </ul>
+</div>
 {% if form_unknown.files.choices %}
   <form method="post" action="{{ url_for('add_unknown_confirm') }}">
     {{ form_unknown.csrf_token }}
