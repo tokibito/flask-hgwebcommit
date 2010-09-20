@@ -70,6 +70,20 @@ div.status-help {
   background-color: #FFCCFF;
 }
 
+#sidebar .sidebar-panel {
+  padding: 0.5em 1em;
+  line-height: 1.4em;
+  background-color: #EEEEEE;
+  border: solid 1px #CCCCCC;
+  margin-bottom: 1em;
+}
+#sidebar .sidebar-panel td {
+  padding-left: 1em;
+}
+#sidebar .sidebar-panel caption {
+  font-weight: bold;
+}
+
 /* id */
 #header {
   padding: 0.5em 0.5em;
@@ -97,17 +111,13 @@ div.status-help {
   padding: 0.5em 1em 0;
 }
 
-#repository-meta {
+#sidebar {
   float: right;
   margin: 1.2em;
-  padding: 1em;
-  line-height: 1.4em;
-  background-color: #EEEEEE;
-  border: solid 1px #CCCCCC;
 }
-#repository-meta td {
-  padding-left: 1em;
-}
-#repository-meta caption {
-  font-weight: bold;
+#sidebar h3 {
+  margin: 0;
+  padding: 0 0 0.5em 0;
+  text-align: center;
+  font-size: small;
 }

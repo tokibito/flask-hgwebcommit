@@ -42,7 +42,7 @@ class ActionManager(object):
         (name, label)
         の形式choicesで使う
         """
-        return [(action.name, aciton.label) for action in self.actions]
+        return [(action.name, action.label) for action in self.actions]
 
     def pick(self, name):
         """

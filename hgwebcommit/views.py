@@ -8,7 +8,8 @@ from flask import Flask, render_template, request, abort, redirect, url_for, ses
 
 from hgwebcommit import app
 from hgwebcommit.hgwrapper import MercurialWrapper
-from hgwebcommit.forms import SelectFileForm, SelectFileConfirmForm, SelectFileSubmitConfirmForm
+from hgwebcommit.forms import SelectFileForm, SelectFileConfirmForm, SelectFileSubmitConfirmForm, SelectActionForm
+from hgwebcommit.actions import manager as action_manager
 
 # const
 OPERATION_MESSAGE = {
@@ -49,13 +50,22 @@ def operation_repo(repo, operation, files, commit_message=None):
 # entry points
 @app.route('/')
 def index():
+    """
+    トップページ
+    """
     repo = get_repo()
     form_ctrl = SelectFileForm(request.form, prefix='ctrl-')
     form_unknown = SelectFileForm(request.form)
     form_ctrl.files.choices = get_choices_ctrl(repo)
     form_unknown.files.choices = get_choices_unknown(repo)
+    form_actions = SelectActionForm(request.form, prefix='action-')
+    form_actions.action.choices = action_manager.list()
     return render_template('index.html',
-        repository=repo, form_unknown=form_unknown, form_ctrl=form_ctrl)
+        repository=repo,
+        form_unknown=form_unknown,
+        form_ctrl=form_ctrl,
+        form_actions=form_actions
+    )
 
 @app.route('/add_unknown', methods=['POST'])
 def add_unknown_confirm():
@@ -106,3 +116,16 @@ def submit_confirm():
         message=OPERATION_MESSAGE.get(form.data['operation']),
         enable_commit_message=form.data['operation'] == 'commit'
     )
+
+@app.route('/exec_action', methods=['POST'])
+def exec_action():
+    """
+    アクションの実行
+    """
+    form = SelectActionForm(request.form, prefix='action-')
+    form.action.choices = action_manager.list()
+    if form.validate():
+        response = action_manager.call(form.data['action'])
+        if response is not None:
+            return response
+    return redirect(url_for('index'))
