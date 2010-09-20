@@ -37,16 +37,16 @@
 <div class="status-help">
   <ul>
     <li>
-      <span class="status-mark">M</span>変更
+      <span class="status-mark status-modified">M</span>変更
     </li>
     <li>
-      <span class="status-mark">A</span>追加
+      <span class="status-mark status-added">A</span>追加
     </li>
     <li>
-      <span class="status-mark">R</span>削除
+      <span class="status-mark status-removed">R</span>削除
     </li>
     <li>
-      <span class="status-mark">!</span>行方不明
+      <span class="status-mark status-missing">!</span>行方不明
     </li>
   </ul>
 </div>
@@ -72,7 +72,7 @@
 <div class="status-help">
   <ul>
     <li>
-      <span class="status-mark">?</span>管理外
+      <span class="status-mark status-not-tracked">?</span>管理外
     </li>
   </ul>
 </div>
@@ -100,6 +100,23 @@
     $("#formctrl-operation").val(op);
     $("#formctrl").submit();
   };
+  hgwebcommit.apply_status_color = function(parent) {
+    var colormap = {
+      "M": "status-modified",
+      "A": "status-added",
+      "R": "status-removed",
+      "!": "status-missing",
+      "?": "status-not-tracked"
+    };
+    $(parent + " option").each(function(idx, val) {
+      var obj = $(val);
+      if (obj.text().length > 0) {
+        var key = obj.text().charAt(0);
+        var style = colormap[key];
+        obj.addClass(style);
+      }
+    });
+  };
 
   $(document).ready(function() {
     $("#formctrl-commit").click(function() {
@@ -111,6 +128,7 @@
     $("#formctrl-remove").click(function() {
       hgwebcommit.submit_form("remove");
     });
-  })
+    hgwebcommit.apply_status_color(".select-files");
+  });
 })();
 {% endblock %}

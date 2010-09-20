@@ -54,6 +54,22 @@ div.status-help {
   float: left;
 }
 
+.status-modified {
+  background-color: #CCCCFF;
+}
+.status-added {
+  background-color: #CCFFCC;
+}
+.status-removed {
+  background-color: #FFCCCC;
+}
+.status-missing {
+  background-color: #CCFFFF;
+}
+.status-not-tracked {
+  background-color: #FFCCFF;
+}
+
 /* id */
 #header {
   padding: 0.5em 0.5em;
