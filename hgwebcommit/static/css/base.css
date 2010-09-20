@@ -32,6 +32,44 @@ form {
   margin: 0.5em 0;
 }
 
+div.status-help {
+  height: 2em;
+}
+.status-help ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.status-help li {
+  display: block;
+  float: left;
+  margin-right: 1em;
+}
+.status-help .status-mark {
+  border: solid 1px #CCCCCC;
+  display: block;
+  text-align: center;
+  width: 1.2em;
+  margin-right: 0.2em;
+  float: left;
+}
+
+.status-modified {
+  background-color: #CCCCFF;
+}
+.status-added {
+  background-color: #CCFFCC;
+}
+.status-removed {
+  background-color: #FFCCCC;
+}
+.status-missing {
+  background-color: #CCFFFF;
+}
+.status-not-tracked {
+  background-color: #FFCCFF;
+}
+
 /* id */
 #header {
   padding: 0.5em 0.5em;
