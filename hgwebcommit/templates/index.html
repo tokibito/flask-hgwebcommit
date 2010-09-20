@@ -21,16 +21,18 @@
       </tbody>
     </table>
   </div>
-  <div id="action-form" class="sidebar-panel">
-    <h3>アクションを実行</h3>
-    <form method="post" action="{{ url_for('exec_action') }}" id="formactions">
-      {{ form_actions.csrf_token }}
-      <div>
-        {{ form_actions.action }}
-        <input type="submit" value="実行" />
-      </div>
-    </form>
-  </div>
+  {% if form_actions.action.choices %}
+    <div id="action-form" class="sidebar-panel">
+      <h3>アクションを実行</h3>
+      <form method="post" action="{{ url_for('exec_action') }}" id="formactions">
+        {{ form_actions.csrf_token }}
+        <div>
+          {{ form_actions.action }}
+          <input type="submit" value="実行" />
+        </div>
+      </form>
+    </div>
+  {% endif %}
 </div>
 
 {% with messages = get_flashed_messages() %}
