@@ -1,4 +1,3 @@
-# coding:utf8
 import os
 import logging
 from copy import copy
@@ -13,9 +12,9 @@ from hgwebcommit.actions import manager as action_manager
 
 # const
 OPERATION_MESSAGE = {
-  'commit': u'コミットします(commit)',
-  'revert': u'戻します(revert)',
-  'remove': u'削除します(remove)',
+  'commit': 'Commit',
+  'revert': 'Revert',
+  'remove': 'Remove',
 }
 
 # util
@@ -33,17 +32,17 @@ def get_choices_unknown(repo):
 
 def operation_repo(repo, operation, files, commit_message=None):
     if operation == 'commit':
-        # コミット
+        # commit
         repo.commit(files, commit_message)
-        return u'コミットしました。'
+        return 'commited.'
     elif operation == 'revert':
-        # 元に戻す
+        # revert
         repo.revert(files)
-        return u'元に戻しました。'
+        return 'reverted.'
     elif operation == 'remove':
-        # 削除しました
+        # remove
         repo.remove(files)
-        return u'削除しました。'
+        return 'removed.'
     else:
         abort(400)
 
@@ -51,7 +50,7 @@ def operation_repo(repo, operation, files, commit_message=None):
 @app.route('/')
 def index():
     """
-    トップページ
+    top page
     """
     repo = get_repo()
     form_ctrl = SelectFileForm(request.form, prefix='ctrl-')
@@ -70,7 +69,7 @@ def index():
 @app.route('/add_unknown', methods=['POST'])
 def add_unknown_confirm():
     """
-    管理外のファイル
+    Show confirm on adding untracked files
     """
     repo = get_repo()
     form = SelectFileConfirmForm(request.form)
@@ -78,9 +77,9 @@ def add_unknown_confirm():
     if not form.validate():
         abort(400)
     if form.data.get('confirm'):
-        # リポジトリに追加
+        # add to repos
         repo.add(form.data['files'])
-        flash(u'追加しました。')
+        flash('added.')
         return redirect(url_for('index'))
     formdata = MultiDict(request.form)
     del formdata['csrf']
@@ -93,7 +92,7 @@ def add_unknown_confirm():
 @app.route('/submit', methods=['POST'])
 def submit_confirm():
     """
-    管理下のファイル
+    Show confirm submitting
     """
     repo = get_repo()
     form = SelectFileSubmitConfirmForm(request.form, prefix='ctrl-')
@@ -120,7 +119,7 @@ def submit_confirm():
 @app.route('/exec_action', methods=['POST'])
 def exec_action():
     """
-    アクションの実行
+    Run action method
     """
     form = SelectActionForm(request.form, prefix='action-')
     form.action.choices = action_manager.list()

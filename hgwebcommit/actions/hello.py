@@ -1,8 +1,7 @@
-# coding:utf8
 from flask import flash
 
 from hgwebcommit.actions.decorators import action
 
-@action('hello', u'こんにちは')
+@action('hello', 'Hello')
 def hello():
-    flash(u'こんにちは！')
+    flash('Hello!')
