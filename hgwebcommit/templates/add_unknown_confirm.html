@@ -2,7 +2,7 @@
 
 {% block main %}
 <p>
-These files are added to the repository:
+{{ gettext('These files are added to the repository') }}:
 </p>
 <ul>
   {% for filename in form.data.files %}
@@ -16,8 +16,8 @@ These files are added to the repository:
     {{ form.confirm }}
   </div>
   <div class="operation">
-    <input type="submit" value="OK" />
-    <button type="button" class="button-cancel">Cancel</button>
+    <input type="submit" value="{{ gettext('OK') }}" />
+    <button type="button" class="button-cancel">{{ gettext('Cancel') }}</button>
   </div>
 </form>
 {% endblock %}

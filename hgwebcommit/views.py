@@ -4,6 +4,8 @@ from copy import copy
 
 from werkzeug import MultiDict
 from flask import Flask, render_template, request, abort, redirect, url_for, session, flash
+from flaskext.babel import gettext as _
+from flaskext.babel import lazy_gettext
 
 from hgwebcommit import app
 from hgwebcommit.hgwrapper import MercurialWrapper
@@ -12,9 +14,9 @@ from hgwebcommit.actions import manager as action_manager
 
 # const
 OPERATION_MESSAGE = {
-  'commit': 'Commit',
-  'revert': 'Revert',
-  'remove': 'Remove',
+  'commit': lazy_gettext('Commit'),
+  'revert': lazy_gettext('Revert'),
+  'remove': lazy_gettext('Remove'),
 }
 
 # util
@@ -34,15 +36,15 @@ def operation_repo(repo, operation, files, commit_message=None):
     if operation == 'commit':
         # commit
         repo.commit(files, commit_message)
-        return 'commited.'
+        return _('commited.')
     elif operation == 'revert':
         # revert
         repo.revert(files)
-        return 'reverted.'
+        return _('reverted.')
     elif operation == 'remove':
         # remove
         repo.remove(files)
-        return 'removed.'
+        return _('removed.')
     else:
         abort(400)
 
@@ -79,7 +81,7 @@ def add_unknown_confirm():
     if form.data.get('confirm'):
         # add to repos
         repo.add(form.data['files'])
-        flash('added.')
+        flash(_('added.'))
         return redirect(url_for('index'))
     formdata = MultiDict(request.form)
     del formdata['csrf']
