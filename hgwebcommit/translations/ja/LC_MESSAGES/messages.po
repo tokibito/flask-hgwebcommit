@@ -1,6 +1,7 @@
-# Japanese translations for PROJECT.
+# Japanese translations for hgwebcommit.
 # Copyright (C) 2010 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the hgwebcommit
+# project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
 msgid ""
@@ -8,7 +9,7 @@ msgstr ""
 "Project-Id-Version: hgwebcommit 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2010-09-23 18:36+0900\n"
-"PO-Revision-Date: 2010-09-23 18:51+0900\n"
+"PO-Revision-Date: 2010-09-23 19:33+0900\n"
 "Last-Translator: Shinya Okano <tokibito@gmail.com>\n"
 "Language-Team: ja <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
@@ -21,33 +22,41 @@ msgstr ""
 msgid "Commit message"
 msgstr "コミットメッセージ"
 
-#: views.py:16 templates/index.html:75
+#: views.py:17 templates/index.html:75
 msgid "Commit"
 msgstr "コミット(commit)"
 
-#: views.py:17 templates/index.html:76
+#: views.py:18 templates/index.html:76
 msgid "Revert"
 msgstr "元に戻す(revert)"
 
-#: views.py:18 templates/index.html:77
+#: views.py:19 templates/index.html:77
 msgid "Remove"
 msgstr "削除(remove)"
 
-#: views.py:38
+#: views.py:39
 msgid "commited."
 msgstr "コミットしました。"
 
-#: views.py:42
+#: views.py:43
 msgid "reverted."
 msgstr "元に戻しました。"
 
-#: views.py:46
+#: views.py:47
 msgid "removed."
 msgstr "削除しました。"
 
-#: views.py:83
+#: views.py:84
 msgid "added."
 msgstr "追加しました。"
+
+#: actions/hello.py:6
+msgid "Hello"
+msgstr "こんにちは"
+
+#: actions/hello.py:8
+msgid "Hello!"
+msgstr "こんにちは!"
 
 #: templates/add_unknown_confirm.html:5
 msgid "These files are added to the repository"
@@ -84,6 +93,10 @@ msgstr "日時"
 #: templates/index.html:26
 msgid "run action"
 msgstr "アクションを実行"
+
+#: templates/index.html:31
+msgid "Run"
+msgstr "実行"
 
 #: templates/index.html:50
 msgid "Changes in tracked files"

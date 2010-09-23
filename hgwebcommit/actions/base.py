@@ -1,4 +1,3 @@
-# coding:utf8
 class InvalidAction(Exception):
     pass
 
@@ -22,7 +21,7 @@ class ActionManager(object):
     @property
     def actions(self):
         """
-        アクションが未ロードならロードする
+        proxy access to actions property
         """
         if not self.loaded:
             self.loaded = True
@@ -32,21 +31,21 @@ class ActionManager(object):
 
     def add(self, action):
         """
-        追加
+        add action
         """
         self._actions.append(action)
 
     def list(self):
         """
-        一覧表示
-        (name, label)
-        の形式choicesで使う
+        list actions
+        result: (name, label)
+        eg: use choices.
         """
         return [(action.name, action.label) for action in self.actions]
 
     def pick(self, name):
         """
-        名前でアクションを探して返す
+        return action by name
         """
         for action in self.actions:
             if action.name == name:
@@ -55,7 +54,7 @@ class ActionManager(object):
 
     def call(self, name, *args, **kwargs):
         """
-        名前を指定してアクションを呼び出す
+        call action by name
         """
         action = self.pick(name)
         return action(*args, **kwargs)

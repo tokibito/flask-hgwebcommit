@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2010-09-23 18:51+0900\n"
+"POT-Creation-Date: 2010-09-23 19:32+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,32 +21,40 @@ msgstr ""
 msgid "Commit message"
 msgstr ""
 
-#: views.py:16 templates/index.html:75
+#: views.py:17 templates/index.html:75
 msgid "Commit"
 msgstr ""
 
-#: views.py:17 templates/index.html:76
+#: views.py:18 templates/index.html:76
 msgid "Revert"
 msgstr ""
 
-#: views.py:18 templates/index.html:77
+#: views.py:19 templates/index.html:77
 msgid "Remove"
 msgstr ""
 
-#: views.py:38
+#: views.py:39
 msgid "commited."
 msgstr ""
 
-#: views.py:42
+#: views.py:43
 msgid "reverted."
 msgstr ""
 
-#: views.py:46
+#: views.py:47
 msgid "removed."
 msgstr ""
 
-#: views.py:83
+#: views.py:84
 msgid "added."
+msgstr ""
+
+#: actions/hello.py:6
+msgid "Hello"
+msgstr ""
+
+#: actions/hello.py:8
+msgid "Hello!"
 msgstr ""
 
 #: templates/add_unknown_confirm.html:5
@@ -83,6 +91,10 @@ msgstr ""
 
 #: templates/index.html:26
 msgid "run action"
+msgstr ""
+
+#: templates/index.html:31
+msgid "Run"
 msgstr ""
 
 #: templates/index.html:50
