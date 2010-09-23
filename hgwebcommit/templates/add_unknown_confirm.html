@@ -2,7 +2,7 @@
 
 {% block main %}
 <p>
-以下のファイルを管理対象に追加します:
+{{ gettext('These files are added to the repository') }}:
 </p>
 <ul>
   {% for filename in form.data.files %}
@@ -16,8 +16,8 @@
     {{ form.confirm }}
   </div>
   <div class="operation">
-    <input type="submit" value="OK" />
-    <button type="button" class="button-cancel">キャンセル</button>
+    <input type="submit" value="{{ gettext('OK') }}" />
+    <button type="button" class="button-cancel">{{ gettext('Cancel') }}</button>
   </div>
 </form>
 {% endblock %}

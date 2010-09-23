@@ -1,3 +1,4 @@
 Flask>=0.5
 Flask-WTF>=0.2.3
+Flask-Babel>=0.6
 simplejson>=2.1.0

@@ -4,18 +4,18 @@
 <div id="sidebar">
   <div id="repository-meta" class="sidebar-panel">
     <table>
-      <caption>リポジトリの状態</caption>
+      <caption>{{ gettext('Repository status') }}</caption>
       <tbody>
         <tr>
-          <th>ブランチ</th>
+          <th>{{ gettext('branch') }}</th>
           <td>{{ repository.branch() }}</td>
         </tr>
         <tr>
-          <th>リビジョン</th>
+          <th>{{ gettext('revision') }}</th>
           <td>{{ repository.parent_number() }}: {{ repository.parent_revision() }}</td>
         </tr>
         <tr>
-          <th>日時</th>
+          <th>{{ gettext('timestamp') }}</th>
           <td>{{ repository.parent_date() }}</td>
         </tr>
       </tbody>
@@ -23,12 +23,12 @@
   </div>
   {% if form_actions.action.choices %}
     <div id="action-form" class="sidebar-panel">
-      <h3>アクションを実行</h3>
+      <h3>{{ gettext('run action') }}</h3>
       <form method="post" action="{{ url_for('exec_action') }}" id="formactions">
         {{ form_actions.csrf_token }}
         <div>
           {{ form_actions.action }}
-          <input type="submit" value="実行" />
+          <input type="submit" value="Run" />
         </div>
       </form>
     </div>
@@ -47,20 +47,20 @@
   {% endif %}
 {% endwith %}
 
-<h2>管理対象のファイルの変更</h2>
+<h2>{{ gettext('Changes in tracked files') }}</h2>
 <div class="status-help">
   <ul>
     <li>
-      <span class="status-mark status-modified">M</span>変更
+      <span class="status-mark status-modified">M</span>{{ gettext('Modified') }}
     </li>
     <li>
-      <span class="status-mark status-added">A</span>追加
+      <span class="status-mark status-added">A</span>{{ gettext('Added') }}
     </li>
     <li>
-      <span class="status-mark status-removed">R</span>削除
+      <span class="status-mark status-removed">R</span>{{ gettext('Removed') }}
     </li>
     <li>
-      <span class="status-mark status-missing">!</span>行方不明
+      <span class="status-mark status-missing">!</span>{{ gettext('Missing') }}
     </li>
   </ul>
 </div>
@@ -72,21 +72,21 @@
     </div>
     <div class="operation">
       <input type="hidden" name="{{ form_ctrl._prefix }}operation" value="" id="formctrl-operation" />
-      <button type="button" id="formctrl-commit">コミット(commit)</button>
-      <button type="button" id="formctrl-revert">戻す(revert)</button>
-      <button type="button" id="formctrl-remove">削除(remove)</button>
+      <button type="button" id="formctrl-commit">{{ gettext('Commit') }}</button>
+      <button type="button" id="formctrl-revert">{{ gettext('Revert') }}</button>
+      <button type="button" id="formctrl-remove">{{ gettext('Remove') }}</button>
     </div>
   </form>
 {% else %}
   <p>
-    管理対象のファイルに変更はありません。
+    {{ gettext('There was no changes in tracked files.') }}
   </p>
 {% endif %}
-<h2>管理外のファイル</h2>
+<h2>{{ gettext('Untracked files') }}</h2>
 <div class="status-help">
   <ul>
     <li>
-      <span class="status-mark status-not-tracked">?</span>管理外
+      <span class="status-mark status-not-tracked">?</span>{{ gettext('Not tracked') }}
     </li>
   </ul>
 </div>
@@ -97,12 +97,12 @@
       {{ form_unknown.files }}
     </div>
     <div class="operation">
-      <input type="submit" value="追加(add)" />
+      <input type="submit" value="{{ gettext('Add') }}" />
     </div>
   </form>
 {% else %}
   <p>
-    管理外のファイルはありません。
+    {{ gettext('There was no untracked files.') }}
   </p>
 {% endif %}
 {% endblock %}
