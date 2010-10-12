@@ -70,12 +70,14 @@
     <div class="select-files">
       {{ form_ctrl.files }}
     </div>
-    <div class="operation">
-      <input type="hidden" name="{{ form_ctrl._prefix }}operation" value="" id="formctrl-operation" />
-      <button type="button" id="formctrl-commit">{{ gettext('Commit') }}</button>
-      <button type="button" id="formctrl-revert">{{ gettext('Revert') }}</button>
-      <button type="button" id="formctrl-remove">{{ gettext('Remove') }}</button>
-    </div>
+    {% if allow_commit %}
+      <div class="operation">
+        <input type="hidden" name="{{ form_ctrl._prefix }}operation" value="" id="formctrl-operation" />
+        <button type="button" id="formctrl-commit">{{ gettext('Commit') }}</button>
+        <button type="button" id="formctrl-revert">{{ gettext('Revert') }}</button>
+        <button type="button" id="formctrl-remove">{{ gettext('Remove') }}</button>
+      </div>
+    {% endif %}
   </form>
 {% else %}
   <p>
@@ -96,9 +98,11 @@
     <div class="select-files">
       {{ form_unknown.files }}
     </div>
-    <div class="operation">
-      <input type="submit" value="{{ gettext('Add') }}" />
-    </div>
+    {% if allow_commit %}
+      <div class="operation">
+        <input type="submit" value="{{ gettext('Add') }}" />
+      </div>
+    {% endif %}
   </form>
 {% else %}
   <p>

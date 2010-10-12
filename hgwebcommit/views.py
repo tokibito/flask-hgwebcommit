@@ -24,6 +24,9 @@ OPERATION_MESSAGE = {
 def get_repo():
     return MercurialWrapper(app.config['HGWEBCOMMIT_REPOSITORY'], app.config['HGWEBCOMMIT_ENCODING'])
 
+def get_allow_commit():
+    return app.config.get('HGWEBCOMMIT_ALLOW_COMMIT', True)
+
 def get_choices_ctrl(repo):
     return [(val, 'M %s' % val) for val in repo.status_modified()] + \
         [(val, 'A %s' % val) for val in repo.status_added()] + \
@@ -71,6 +74,7 @@ def index():
         form_ctrl=form_ctrl,
         form_actions=form_actions,
         hostname=gethostname(),
+        allow_commit=get_allow_commit(),
     )
 
 @app.route('/add_unknown', methods=['POST'])
@@ -78,6 +82,8 @@ def add_unknown_confirm():
     """
     Show confirm on adding untracked files
     """
+    if not get_allow_commit():
+        abort(401)
     repo = get_repo()
     form = SelectFileConfirmForm(request.form)
     form.files.choices = get_choices_unknown(repo)
@@ -104,6 +110,8 @@ def submit_confirm():
     """
     Show confirm submitting
     """
+    if not get_allow_commit():
+        abort(401)
     repo = get_repo()
     form = SelectFileSubmitConfirmForm(request.form, prefix='ctrl-')
     form.files.choices = get_choices_ctrl(repo)
