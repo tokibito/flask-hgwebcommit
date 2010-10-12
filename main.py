@@ -5,6 +5,7 @@ from hgwebcommit import app
 SECRET_KEY = '(secret key)'
 HGWEBCOMMIT_REPOSITORY = '/path/to/repository'
 HGWEBCOMMIT_ENCODING = 'utf-8'
+HGWEBCOMMIT_ALLOW_COMMIT = True
 
 # actions
 HGWEBCOMMIT_ACTIONS = (
