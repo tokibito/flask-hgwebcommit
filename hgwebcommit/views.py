@@ -1,4 +1,5 @@
 import os
+import socket
 import logging
 from copy import copy
 
@@ -48,6 +49,9 @@ def operation_repo(repo, operation, files, commit_message=None):
     else:
         abort(400)
 
+def gethostname():
+    return socket.gethostname()
+
 # entry points
 @app.route('/')
 def index():
@@ -65,7 +69,8 @@ def index():
         repository=repo,
         form_unknown=form_unknown,
         form_ctrl=form_ctrl,
-        form_actions=form_actions
+        form_actions=form_actions,
+        hostname=gethostname(),
     )
 
 @app.route('/add_unknown', methods=['POST'])
@@ -89,7 +94,10 @@ def add_unknown_confirm():
     form.files.choices = get_choices_unknown(repo)
     form.validate()
     return render_template('add_unknown_confirm.html',
-        repository=repo, form=form)
+        repository=repo,
+        form=form,
+        hostname=gethostname(),
+    )
 
 @app.route('/submit', methods=['POST'])
 def submit_confirm():
@@ -115,7 +123,8 @@ def submit_confirm():
         repository=repo,
         form=form,
         message=OPERATION_MESSAGE.get(form.data['operation']),
-        enable_commit_message=form.data['operation'] == 'commit'
+        enable_commit_message=form.data['operation'] == 'commit',
+        hostname=gethostname(),
     )
 
 @app.route('/exec_action', methods=['POST'])
