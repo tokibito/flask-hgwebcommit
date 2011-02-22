@@ -1,14 +1,14 @@
 # Translations template for PROJECT.
-# Copyright (C) 2010 ORGANIZATION
+# Copyright (C) 2011 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2010-09-23 19:32+0900\n"
+"POT-Creation-Date: 2011-02-22 16:20+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,31 +21,35 @@ msgstr ""
 msgid "Commit message"
 msgstr ""
 
-#: views.py:17 templates/index.html:75
+#: views.py:18 templates/index.html:76
 msgid "Commit"
 msgstr ""
 
-#: views.py:18 templates/index.html:76
+#: views.py:19 templates/index.html:77
 msgid "Revert"
 msgstr ""
 
-#: views.py:19 templates/index.html:77
+#: views.py:20 templates/index.html:78
 msgid "Remove"
 msgstr ""
 
-#: views.py:39
+#: views.py:44
 msgid "commited."
 msgstr ""
 
-#: views.py:43
+#: views.py:48
 msgid "reverted."
 msgstr ""
 
-#: views.py:47
+#: views.py:52
 msgid "removed."
 msgstr ""
 
-#: views.py:84
+#: views.py:92 views.py:121
+msgid "Invalid request. Please input again."
+msgstr ""
+
+#: views.py:97
 msgid "added."
 msgstr ""
 
@@ -117,23 +121,23 @@ msgstr ""
 msgid "Missing"
 msgstr ""
 
-#: templates/index.html:82
+#: templates/index.html:84
 msgid "There was no changes in tracked files."
 msgstr ""
 
-#: templates/index.html:85
+#: templates/index.html:87
 msgid "Untracked files"
 msgstr ""
 
-#: templates/index.html:89
+#: templates/index.html:91
 msgid "Not tracked"
 msgstr ""
 
-#: templates/index.html:100
+#: templates/index.html:103
 msgid "Add"
 msgstr ""
 
-#: templates/index.html:105
+#: templates/index.html:109
 msgid "There was no untracked files."
 msgstr ""
 

@@ -89,7 +89,8 @@ def add_unknown_confirm():
     form = SelectFileConfirmForm(request.form)
     form.files.choices = get_choices_unknown(repo)
     if not form.validate():
-        abort(400)
+        flash(_('Invalid request. Please input again.'))
+        return redirect(url_for('index'))
     if form.data.get('confirm'):
         # add to repos
         repo.add(form.data['files'])
@@ -117,7 +118,8 @@ def submit_confirm():
     form = SelectFileSubmitConfirmForm(request.form, prefix='ctrl-')
     form.files.choices = get_choices_ctrl(repo)
     if not form.validate():
-        abort(400)
+        flash(_('Invalid request. Please input again.'))
+        return redirect(url_for('index'))
     if form.data.get('confirm'):
         # operation
         message = operation_repo(repo, form.data['operation'], form.data['files'], form.data['commit_message'])
