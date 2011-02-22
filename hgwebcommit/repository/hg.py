@@ -1,34 +1,38 @@
 import os
 
-from mercurial import cmdutil
-from mercurial import commands
 from mercurial.util import datestr
 from mercurial.hg import repository
 from mercurial.ui import ui
-from mercurial.match import match
 from mercurial.node import short
+from mercurial import commands
+from mercurial.match import match
 
-class MercurialWrapper(object):
-    def __init__(self, path, encoding='utf-8'):
-        self.path = os.path.normpath(path)
+from hgwebcommit.repository.base import BaseRepository
+
+class MercurialRepository(BaseRepository):
+    def __init__(self, path, encoding='utf-8', **kwargs):
+        super(MercurialRepository, self).__init__(**kwargs)
+        self._path = os.path.normpath(path)
         self.ui = ui()
         self.ui.readconfig(os.path.join(self.path, '.hg', 'hgrc'))
         self.repository = repository(self.ui, self.path)
         self.encoding = encoding
 
-    @property
-    def name(self):
+    def get_name(self):
         return os.path.basename(self.path)
+
+    def get_path(self):
+        return self._path
+
+    def get_parent_node(self):
+        return self.repository['']
 
     @property
     def parent_node(self):
-        return self.repository['']
+        return self.get_parent_node()
 
     def parent_date(self):
         return datestr(self.parent_node.date())
-
-    def parent_branch(self):
-        return self.parent_node.branch()
 
     def parent_revision(self):
         return short(self.parent_node.node())

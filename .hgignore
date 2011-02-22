@@ -2,6 +2,7 @@ syntax:glob
 *.pyc
 *.swp
 *.orig
+*.egg-info
 
 syntax:regexp
 ^test\.py$

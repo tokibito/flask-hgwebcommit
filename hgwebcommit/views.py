@@ -9,7 +9,7 @@ from flaskext.babel import gettext as _
 from flaskext.babel import lazy_gettext
 
 from hgwebcommit import app
-from hgwebcommit.hgwrapper import MercurialWrapper
+#from hgwebcommit.hgwrapper import MercurialWrapper
 from hgwebcommit.forms import SelectFileForm, SelectFileConfirmForm, SelectFileSubmitConfirmForm, SelectActionForm
 from hgwebcommit.actions import manager as action_manager
 
@@ -22,7 +22,8 @@ OPERATION_MESSAGE = {
 
 # util
 def get_repo():
-    return MercurialWrapper(app.config['HGWEBCOMMIT_REPOSITORY'], app.config['HGWEBCOMMIT_ENCODING'])
+    from hgwebcommit.repository import get_repository
+    return get_repository(path=app.config['HGWEBCOMMIT_REPOSITORY'], encoding=app.config['HGWEBCOMMIT_ENCODING'])
 
 def get_allow_commit():
     return app.config.get('HGWEBCOMMIT_ALLOW_COMMIT', True)

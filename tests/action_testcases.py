@@ -1,8 +1,9 @@
 # coding:utf8
-import unittest
 from unittest import TestCase
 
 from hgwebcommit.actions import Action, ActionManager
+
+__all__ = ['ActionTestCase', 'ActionManagerTestCase']
 
 class ActionTestCase(TestCase):
     """
@@ -27,6 +28,3 @@ class ActionManagerTestCase(TestCase):
     def test_call(self):
         self.manager.add(self.action)
         self.assertEqual(self.manager.call('test'), 'ok')
-
-if __name__ == '__main__':
-    unittest.main()
