@@ -70,6 +70,13 @@ div.status-help {
   background-color: #FFCCFF;
 }
 
+ul.flashes {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background-color: #FFD079;
+  border: solid 1px #FFA859;
+}
+
 #sidebar .sidebar-panel {
   padding: 0.5em 1em;
   line-height: 1.4em;

@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hgwebcommit 0.1\n"
+"Project-Id-Version: hgwebcommit 0.2\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2010-09-23 18:36+0900\n"
-"PO-Revision-Date: 2010-09-23 19:33+0900\n"
+"PO-Revision-Date: 2011-02-22 16:20+0900\n"
 "Last-Translator: Shinya Okano <tokibito@gmail.com>\n"
 "Language-Team: ja <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
@@ -22,31 +22,35 @@ msgstr ""
 msgid "Commit message"
 msgstr "コミットメッセージ"
 
-#: views.py:17 templates/index.html:75
+#: views.py:18 templates/index.html:76
 msgid "Commit"
 msgstr "コミット(commit)"
 
-#: views.py:18 templates/index.html:76
+#: views.py:19 templates/index.html:77
 msgid "Revert"
 msgstr "元に戻す(revert)"
 
-#: views.py:19 templates/index.html:77
+#: views.py:20 templates/index.html:78
 msgid "Remove"
 msgstr "削除(remove)"
 
-#: views.py:39
+#: views.py:44
 msgid "commited."
 msgstr "コミットしました。"
 
-#: views.py:43
+#: views.py:48
 msgid "reverted."
 msgstr "元に戻しました。"
 
-#: views.py:47
+#: views.py:52
 msgid "removed."
 msgstr "削除しました。"
 
-#: views.py:84
+#: views.py:92 views.py:121
+msgid "Invalid request. Please input again."
+msgstr "リクエストが不正です。もう一度送信して下さい。"
+
+#: views.py:97
 msgid "added."
 msgstr "追加しました。"
 
@@ -118,23 +122,23 @@ msgstr "削除"
 msgid "Missing"
 msgstr "行方不明"
 
-#: templates/index.html:82
+#: templates/index.html:84
 msgid "There was no changes in tracked files."
 msgstr "管理対象のファイルに変更はありません。"
 
-#: templates/index.html:85
+#: templates/index.html:87
 msgid "Untracked files"
 msgstr "管理外のファイル"
 
-#: templates/index.html:89
+#: templates/index.html:91
 msgid "Not tracked"
 msgstr "管理外"
 
-#: templates/index.html:100
+#: templates/index.html:103
 msgid "Add"
 msgstr "追加(add)"
 
-#: templates/index.html:105
+#: templates/index.html:109
 msgid "There was no untracked files."
 msgstr "管理外のファイルはありません。"
 
