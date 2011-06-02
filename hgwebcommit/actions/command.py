@@ -36,4 +36,5 @@ class ExecuteCommandAction(BaseAction):
             message=message,
             repository=repo,
             form=form,
+            action_name=self.name,
         )

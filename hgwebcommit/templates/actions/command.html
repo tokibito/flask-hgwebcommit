@@ -8,7 +8,7 @@
   <div style="display:none;">
     {{ form.csrf }}
     {{ form.confirm }}
-    <input type="hidden" name="action-action" value="test_command"/>
+    <input type="hidden" name="action-action" value="{{ action_name }}"/>
   </div>
   <div class="operation">
     <input type="submit" value="{{ gettext('OK') }}" />
