@@ -4,7 +4,7 @@ from flaskext.babel import gettext as _
 from flaskext.babel import lazy_gettext
 
 from hgwebcommit import app
-from hgwebcommit.utils import gethostname, get_repo
+from hgwebcommit.utils import gethostname, get_repo, operation_repo
 from hgwebcommit.forms import SelectFileForm, SelectFileConfirmForm, SelectFileSubmitConfirmForm, SelectActionForm
 from hgwebcommit.actions import manager as action_manager
 
@@ -27,25 +27,6 @@ def get_choices_ctrl(repo):
 
 def get_choices_unknown(repo):
     return [(val, '? %s' % val) for val in repo.status_unknown()]
-
-def operation_repo(repo, operation, files, commit_message=None):
-    if operation == 'commit':
-        # commit
-        repo.commit(files, commit_message)
-        app.logger.info('commit - %s [%s]' % (commit_message, ', '.join(files)))
-        return _('commited.')
-    elif operation == 'revert':
-        # revert
-        repo.revert(files)
-        app.logger.info('reverted - [%s]' % ', '.join(files))
-        return _('reverted.')
-    elif operation == 'remove':
-        # remove
-        repo.remove(files)
-        app.logger.info('removed - [%s]' % ', '.join(files))
-        return _('removed.')
-    else:
-        abort(400)
 
 # entry points
 @app.route('/')
