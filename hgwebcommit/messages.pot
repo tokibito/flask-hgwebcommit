@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-06-02 18:46+0900\n"
+"POT-Creation-Date: 2011-06-03 02:23+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,44 +21,44 @@ msgstr ""
 msgid "Commit message"
 msgstr ""
 
-#: views.py:17 templates/index.html:76
-msgid "Commit"
-msgstr ""
-
-#: views.py:18 templates/index.html:77
-msgid "Revert"
-msgstr ""
-
-#: views.py:19 templates/index.html:78
-msgid "Remove"
-msgstr ""
-
-#: views.py:40
+#: utils.py:22
 msgid "commited."
 msgstr ""
 
-#: views.py:45
+#: utils.py:27
 msgid "reverted."
 msgstr ""
 
-#: views.py:50
+#: utils.py:32
 msgid "removed."
 msgstr ""
 
-#: views.py:87 views.py:116
+#: views.py:13 templates/index.html:76
+msgid "Commit"
+msgstr ""
+
+#: views.py:14 templates/index.html:77
+msgid "Revert"
+msgstr ""
+
+#: views.py:15 templates/index.html:78
+msgid "Remove"
+msgstr ""
+
+#: views.py:64 views.py:93
 msgid "Invalid request. Please input again."
 msgstr ""
 
-#: views.py:92
+#: views.py:69
 msgid "added."
 msgstr ""
 
-#: actions/command.py:28
+#: actions/command.py:30 actions/commit.py:25
 #, python-format
 msgid "\"%(label)s\" was executed."
 msgstr ""
 
-#: actions/command.py:31
+#: actions/command.py:33 actions/commit.py:28
 #, python-format
 msgid "Execute \"%(label)s\""
 msgstr ""
@@ -76,12 +76,12 @@ msgid "These files are added to the repository"
 msgstr ""
 
 #: templates/add_unknown_confirm.html:19 templates/submit.html:25
-#: templates/actions/command.html:14
+#: templates/actions/command.html:14 templates/actions/commit.html:14
 msgid "OK"
 msgstr ""
 
 #: templates/add_unknown_confirm.html:20 templates/submit.html:26
-#: templates/actions/command.html:15
+#: templates/actions/command.html:15 templates/actions/commit.html:15
 msgid "Cancel"
 msgstr ""
 

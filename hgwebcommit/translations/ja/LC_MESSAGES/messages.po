@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: hgwebcommit 0.2\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2010-09-23 18:36+0900\n"
-"PO-Revision-Date: 2011-06-02 18:46+0900\n"
+"PO-Revision-Date: 2011-06-03 02:23+0900\n"
 "Last-Translator: Shinya Okano <tokibito@gmail.com>\n"
 "Language-Team: ja <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
@@ -22,44 +22,44 @@ msgstr ""
 msgid "Commit message"
 msgstr "コミットメッセージ"
 
-#: views.py:17 templates/index.html:76
-msgid "Commit"
-msgstr "コミット(commit)"
-
-#: views.py:18 templates/index.html:77
-msgid "Revert"
-msgstr "元に戻す(revert)"
-
-#: views.py:19 templates/index.html:78
-msgid "Remove"
-msgstr "削除(remove)"
-
-#: views.py:40
+#: utils.py:22
 msgid "commited."
 msgstr "コミットしました。"
 
-#: views.py:45
+#: utils.py:27
 msgid "reverted."
 msgstr "元に戻しました。"
 
-#: views.py:50
+#: utils.py:32
 msgid "removed."
 msgstr "削除しました。"
 
-#: views.py:87 views.py:116
+#: views.py:13 templates/index.html:76
+msgid "Commit"
+msgstr "コミット(commit)"
+
+#: views.py:14 templates/index.html:77
+msgid "Revert"
+msgstr "元に戻す(revert)"
+
+#: views.py:15 templates/index.html:78
+msgid "Remove"
+msgstr "削除(remove)"
+
+#: views.py:64 views.py:93
 msgid "Invalid request. Please input again."
 msgstr "リクエストが不正です。もう一度送信して下さい。"
 
-#: views.py:92
+#: views.py:69
 msgid "added."
 msgstr "追加しました。"
 
-#: actions/command.py:28
+#: actions/command.py:30 actions/commit.py:25
 #, python-format
 msgid "\"%(label)s\" was executed."
 msgstr "\"%(label)s\" を実行しました。"
 
-#: actions/command.py:31
+#: actions/command.py:33 actions/commit.py:28
 #, python-format
 msgid "Execute \"%(label)s\""
 msgstr "\"%(label)s\" を実行します"
@@ -77,12 +77,12 @@ msgid "These files are added to the repository"
 msgstr "以下のファイルをリポジトリに追加します"
 
 #: templates/add_unknown_confirm.html:19 templates/submit.html:25
-#: templates/actions/command.html:14
+#: templates/actions/command.html:14 templates/actions/commit.html:14
 msgid "OK"
 msgstr "OK"
 
 #: templates/add_unknown_confirm.html:20 templates/submit.html:26
-#: templates/actions/command.html:15
+#: templates/actions/command.html:15 templates/actions/commit.html:15
 msgid "Cancel"
 msgstr "キャンセル"
 
