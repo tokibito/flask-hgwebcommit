@@ -15,3 +15,6 @@ class SelectFileSubmitConfirmForm(SelectFileConfirmForm):
 
 class SelectActionForm(Form):
     action = SelectField('Action', validators=[Required()])
+
+class ConfirmForm(Form):
+    confirm = IntegerField(widget=HiddenInput(), validators=[Required()])

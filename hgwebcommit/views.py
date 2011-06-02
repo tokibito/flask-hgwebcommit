@@ -1,5 +1,4 @@
 import os
-import socket
 import logging
 from copy import copy
 
@@ -9,7 +8,7 @@ from flaskext.babel import gettext as _
 from flaskext.babel import lazy_gettext
 
 from hgwebcommit import app
-#from hgwebcommit.hgwrapper import MercurialWrapper
+from hgwebcommit.utils import gethostname, get_repo
 from hgwebcommit.forms import SelectFileForm, SelectFileConfirmForm, SelectFileSubmitConfirmForm, SelectActionForm
 from hgwebcommit.actions import manager as action_manager
 
@@ -21,10 +20,6 @@ OPERATION_MESSAGE = {
 }
 
 # util
-def get_repo():
-    from hgwebcommit.repository import get_repository
-    return get_repository(path=app.config['HGWEBCOMMIT_REPOSITORY'], encoding=app.config['HGWEBCOMMIT_ENCODING'])
-
 def get_allow_commit():
     return app.config.get('HGWEBCOMMIT_ALLOW_COMMIT', True)
 
@@ -55,9 +50,6 @@ def operation_repo(repo, operation, files, commit_message=None):
         return _('removed.')
     else:
         abort(400)
-
-def gethostname():
-    return socket.gethostname()
 
 # entry points
 @app.route('/')
@@ -146,7 +138,7 @@ def exec_action():
     """
     Run action method
     """
-    form = SelectActionForm(request.form, prefix='action-')
+    form = SelectActionForm(request.form, prefix='action-', csrf_enabled=False)
     form.action.choices = action_manager.list()
     if form.validate():
         response = action_manager.call(form.data['action'])

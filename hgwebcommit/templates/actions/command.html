@@ -1,0 +1,27 @@
+{% extends "base_site.html" %}
+
+{% block main %}
+<p>
+{{ message }}:
+</p>
+<form method="post" action="{{ url_for('exec_action') }}">
+  <div style="display:none;">
+    {{ form.csrf }}
+    {{ form.confirm }}
+    <input type="hidden" name="action-action" value="test_command"/>
+  </div>
+  <div class="operation">
+    <input type="submit" value="{{ gettext('OK') }}" />
+    <button type="button" class="button-cancel">{{ gettext('Cancel') }}</button>
+  </div>
+</form>
+{% endblock %}
+
+{% block js %}
+(function() {
+  var cancel_redirect_url = "{{ url_for('index') }}";
+  $("button.button-cancel").click(function() {
+    document.location = cancel_redirect_url;
+  })
+})();
+{% endblock %}
