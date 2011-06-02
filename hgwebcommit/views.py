@@ -41,14 +41,17 @@ def operation_repo(repo, operation, files, commit_message=None):
     if operation == 'commit':
         # commit
         repo.commit(files, commit_message)
+        app.logger.info('commit - %s [%s]' % (commit_message, ', '.join(files)))
         return _('commited.')
     elif operation == 'revert':
         # revert
         repo.revert(files)
+        app.logger.info('reverted - [%s]' % ', '.join(files))
         return _('reverted.')
     elif operation == 'remove':
         # remove
         repo.remove(files)
+        app.logger.info('removed - [%s]' % ', '.join(files))
         return _('removed.')
     else:
         abort(400)
