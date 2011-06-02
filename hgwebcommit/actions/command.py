@@ -2,6 +2,7 @@
 from flask import render_template, request, redirect, url_for, flash
 from flaskext.babel import gettext
 
+from hgwebcommit import app
 from hgwebcommit.actions.base import BaseAction
 from hgwebcommit.utils import exec_command, get_repo
 from hgwebcommit.forms import ConfirmForm
@@ -20,6 +21,7 @@ class ExecuteCommandAction(BaseAction):
         form = ConfirmForm(request.form, prefix='action-', csrf_enabled=False)
         if form.validate():
             output = exec_command(self.command)
+            app.logger.info('exec_command - %s [%s]' % (self.name, ' '.join(self.command)))
             if self.encoding:
                 output = output.decode(self.encoding)
             if output:

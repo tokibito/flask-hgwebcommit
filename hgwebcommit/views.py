@@ -1,7 +1,3 @@
-import os
-import logging
-from copy import copy
-
 from werkzeug import MultiDict
 from flask import Flask, render_template, request, abort, redirect, url_for, session, flash
 from flaskext.babel import gettext as _
