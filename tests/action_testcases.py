@@ -1,7 +1,7 @@
 # coding:utf8
 from unittest import TestCase
 
-from hgwebcommit.actions import Action, ActionManager
+from hgwebcommit.actions import FunctionAction, ActionManager
 
 __all__ = ['ActionTestCase', 'ActionManagerTestCase']
 
@@ -10,7 +10,7 @@ class ActionTestCase(TestCase):
     Actionのテスト
     """
     def test_call(self):
-        action = Action('test', 'test', lambda :'ok')
+        action = FunctionAction('test', 'test', lambda :'ok')
         self.assertEqual(action(), 'ok')
 
 class ActionManagerTestCase(TestCase):
@@ -18,7 +18,7 @@ class ActionManagerTestCase(TestCase):
     ActionManagerのテスト
     """
     def setUp(self):
-        self.action = Action('test', 'test', lambda :'ok')
+        self.action = FunctionAction('test', 'test', lambda :'ok')
         self.manager = ActionManager()
 
     def test_add(self):

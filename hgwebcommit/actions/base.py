@@ -1,17 +1,30 @@
 class InvalidAction(Exception):
     pass
 
-class Action(object):
-    def __init__(self, name, label, func, params=None):
+
+class BaseAction(object):
+    def __init__(self, name, label, params=None):
         self.name = name
         self.label = label
-        self.func = func
         self.params = params
+
+    def run(self, *args, **kwargs):
+        raise NotImplementedError
 
     def __call__(self, *args, **kwargs):
         if self.params:
             kwargs.update(self.params)
+        return self.run(*args, **kwargs)
+
+
+class FunctionAction(BaseAction):
+    def __init__(self, name, label, func, params=None):
+        super(FunctionAction, self).__init__(name, label, params)
+        self.func = func
+
+    def run(self, *args, **kwargs):
         return self.func(*args, **kwargs)
+
 
 class ActionManager(object):
     def __init__(self):

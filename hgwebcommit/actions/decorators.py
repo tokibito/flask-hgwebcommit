@@ -1,8 +1,8 @@
-from hgwebcommit.actions import Action, manager
+from hgwebcommit.actions import FunctionAction, manager
 
 def action(name, label, params=None):
     def _wrap(func):
-        obj = Action(name, label, func, params)
+        obj = FunctionAction(name, label, func, params)
         manager.add(obj)
         return func
     return _wrap
