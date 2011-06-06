@@ -1,8 +1,3 @@
-.. hgwebcommit documentation master file, created by
-   sphinx-quickstart on Tue Oct 12 14:35:28 2010.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 hgwebcommit ドキュメント
 ========================
 
@@ -101,11 +96,4 @@ HGWEBCOMMIT_ACTIONS
 ----
 
 ファイルシステム上のリポジトリへ変更を行うため、hgwebcommitのサーバを実行するユーザでコミット操作が行われます。
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 

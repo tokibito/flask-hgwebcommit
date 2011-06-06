@@ -3,7 +3,10 @@ syntax:glob
 *.swp
 *.orig
 *.egg-info
+*.omc
+*.omakedb
+*.omakedb.lock
 
 syntax:regexp
 ^test\.py$
-^docs/ja/_build/
+^docs/ja/build/
