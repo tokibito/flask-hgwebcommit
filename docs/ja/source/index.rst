@@ -64,6 +64,11 @@ HGWEBCOMMIT_ACTIONS
 
 サイドバーに表示するアクションを指定します。
 
+HGWEBCOMMIT_REPOSITORY_BACKEND
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+リポジトリ操作を行うクラスを指定します。デフォルトでは ``hgwebcommit.repository.hg.MercurialRepository`` です。
+
 アクション
 ----------
 
