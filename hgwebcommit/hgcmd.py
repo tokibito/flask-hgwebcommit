@@ -12,21 +12,11 @@ def webcommit(ui, repo, **opts):
     from hgwebcommit import app
     app.config.update(DEFAULT_CONFIG)
     app.config['HGWEBCOMMIT_REPOSITORY'] = repo.root
-
-    port = 5000
-    if opts['port']:
-        try:
-            port = int(opts['port'])
-        except ValueError:
-            pass
-
-    host = opts['host'] or '0.0.0.0'
-
-    app.run(host=host, port=port)
+    app.run(host=opts['address'], port=opts['port'])
 
 cmdtable = {
     "^webcommit|wc": (webcommit,
-                     [('p', 'port', None, 'port number'),
-                      ('h', 'host', None, 'bind host')],
-                     "[options] REV")
+                     [('p', 'port', 5000, 'port number'),
+                      ('a', 'address', '127.0.0.1', 'bind address')],
+                     "[options]")
 }
