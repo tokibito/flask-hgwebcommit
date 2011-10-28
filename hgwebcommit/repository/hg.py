@@ -76,4 +76,4 @@ class MercurialRepository(BaseRepository):
         commands.revert(self.ui, self.repository, *[os.path.join(self.path, fn) for fn in files], **opts)
 
     def remove(self, files):
-        self.repository[None].remove(files)
+        commands.remove(self.ui, self.repository, *[os.path.join(self.path, fn) for fn in files])
