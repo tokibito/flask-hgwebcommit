@@ -1,5 +1,9 @@
 include LICENSE
 include MANIFEST.in
 include requirements.txt
+include hgwebcommit/babel.cfg
+include hgwebcommit/messages.pot
+include hgwebcommit/translations/ja/LC_MESSAGES/messages.mo
+include hgwebcommit/translations/ja/LC_MESSAGES/messages.po
 recursive-include hgwebcommit/static *.js *.css *.ico
 recursive-include hgwebcommit/templates *.html
