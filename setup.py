@@ -19,6 +19,13 @@ setup (
       'Programming Language :: Python',
       'Topic :: Software Development :: Libraries :: Python Modules',
     ],
+    install_requires=[
+      'Flask>=0.6.1',
+      'Flask-Babel>=0.6',
+      'Flask-WTF>=0.5.2',
+      'simplejson>=2.1.0',
+      'mercurial>=1.7',
+    ],
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
